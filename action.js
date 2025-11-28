@@ -37,10 +37,10 @@ window.addEventListener('scroll', function () {
     }
 
     // Give the astronaut a lively, pseudo-random flight path tied to scroll
-    const randomX = Math.sin(value * 0.02) * 180 + Math.cos(value * 0.055) * 120;
-    const randomY = Math.cos(value * 0.018) * 150 + Math.sin(value * 0.037) * 90 + value * 0.32;
-    const wobble = Math.sin(value * 0.08) * 12;
-    const rotation = Math.sin(value * 0.03) * 22 + wobble;
+    const randomX = Math.sin(value * 0.022) * 220 + Math.cos(value * 0.07) * 150;
+    const randomY = Math.cos(value * 0.018) * 180 + Math.sin(value * 0.042) * 110 + value * 0.36;
+    const wobble = Math.sin(value * 0.08) * 14;
+    const rotation = Math.sin(value * 0.03) * 24 + wobble;
 
     astronaut.style.transform = `translate(${randomX}px, ${randomY * 0.45}px) rotate(${rotation}deg)`;
 });
