@@ -36,7 +36,7 @@ html {
 }
 
 #header .logo {
-    color: #002431;
+    color: #e9f4ff;
     font-weight: 800;
     font-size: 2.5em;
     text-decoration: none;
@@ -60,13 +60,13 @@ html {
     text-decoration: none;
     /* To prevent Underline */
     padding: 6px 15px;
-    color: #003549;
+    color: #d8e9ff;
     border-radius: 20px;
 }
 
 #header ul li a:hover,
 #header ul li a.active {
-    background: #003549;
+    background: #0e5ec7;
     color: white;
 }
 
@@ -78,6 +78,8 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    perspective: 1200px;
+    transform-style: preserve-3d;
 }
 
 /* To blend section color with water color */
@@ -88,12 +90,13 @@ section::before {
     left: 0;
     width: 100%;
     height: 100px;
-    background: linear-gradient(to top, #085a7a, transparent);
+    background: linear-gradient(to top, #041026, transparent);
     z-index: 10;
 }
 
 /* Make all images absolute and cover whole screen */
-section img {
+section img,
+section div.wallpaper {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,6 +104,7 @@ section img {
     height: 100%;
     object-fit: cover;
     pointer-events: none;
+    will-change: transform;
 }
 
 /* Properites for th text on top section  */
@@ -113,13 +117,14 @@ section #text span {
 
 section #text {
     position: absolute;
-    color: #004660;
+    color: #e9f4ff;
     font-size: 10vw;
     text-align: center;
     line-height: 0.55em;
     font-family: 'Rancho', cursive;
     transform: translateY(-50%);
     top: 50%;
+    z-index: 15;
 }
 
 
@@ -129,17 +134,18 @@ section #text {
     /* To prevent Underline */
     padding: 8px 25px;
     background: white;
-    color: #003549;
+    color: #0e5ec7;
     font-size: 1.3em;
     font-weight: bold;
     letter-spacing: 2px;
     border-radius: 40px;
     transform: translateY(100px);
     /* To move it 100px below from center */
+    z-index: 15;
 }
 
 #explore:hover {
-    background: #003549;
+    background: #0e5ec7;
     color: white;
 }
 
@@ -179,7 +185,9 @@ section #text {
 .sec {
     position: relative;
     padding: 10%;
-    background: #085a7a;
+    background: radial-gradient(circle at 20% 20%, rgba(34, 140, 255, 0.08), transparent 35%),
+        radial-gradient(circle at 80% 10%, rgba(110, 220, 255, 0.12), transparent 30%),
+        #050c1b;
     padding-bottom: 15%;
     z-index: 50;
     overflow: hidden;
@@ -222,88 +230,292 @@ section #text {
 }
 
 
-/* Make all fishes image as absolute.. To overlap with background */
-.fishes {
-    position: absolute;
-    opacity: 0.8;
-}
-
-/* Properties for each fish and sea bed*/
-#fish1 {
-    top: 0%;
-}
-
-#fish2 {
-    top: 32%;
-}
-
-#fish3 {
-    top: 60%;
-}
-
-#fish4 {
-    top: 87%;
-}
-
-#seabed {
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    opacity: 1;
-}
-
+/* Deep space layers beneath the content */
 .undersea {
     position: absolute;
+    inset: 0;
     opacity: 1;
+    will-change: transform;
 }
 
-#sea1 {
-    top: 10%;
-    left: 1%;
-    width: 20%;
+#space-gradient {
+    background: radial-gradient(circle at 20% 20%, rgba(120, 170, 255, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 15%, rgba(120, 220, 255, 0.1), transparent 28%),
+        linear-gradient(180deg, #030712 0%, #060c1e 70%, #071124 100%);
+    z-index: 1;
 }
 
-#sea2 {
-    top: 16%;
-    right: 1%;
-    width: 10%;
+#stars,
+#stars-foreground {
+    background-image: radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8), transparent 50%),
+        radial-gradient(1.5px 1.5px at 80% 30%, rgba(255, 255, 255, 0.8), transparent 50%),
+        radial-gradient(1px 1px at 50% 80%, rgba(255, 255, 255, 0.8), transparent 50%),
+        radial-gradient(2px 2px at 30% 40%, rgba(255, 255, 255, 0.6), transparent 50%),
+        radial-gradient(1.2px 1.2px at 60% 60%, rgba(255, 255, 255, 0.7), transparent 50%);
+    background-repeat: repeat;
+    background-size: 400px 400px;
+    z-index: 2;
 }
 
-#sea3 {
-    top: 40%;
+#stars-foreground {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+    opacity: 0.9;
+    animation: drift 50s linear infinite;
+    z-index: 3;
+}
+
+#earth-glow {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 50% 30%, rgba(33, 150, 243, 0.28), transparent 40%),
+        radial-gradient(circle at 50% 30%, rgba(33, 150, 243, 0.18), transparent 50%);
+    z-index: 4;
+    will-change: transform;
+}
+
+#earth {
+    position: absolute;
+    bottom: -35%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 50% 30%, #1d77ff, #0a3f82 60%, #020b18 72%);
+    border-radius: 50%;
+    box-shadow: 0 -20px 120px rgba(37, 173, 255, 0.5);
+    z-index: 5;
+    will-change: transform;
+}
+
+#aurora {
+    position: absolute;
+    bottom: 5%;
     left: 0;
-    width: 12%;
+    width: 100%;
+    height: 40%;
+    background: radial-gradient(circle at 20% 80%, rgba(92, 255, 255, 0.15), transparent 45%),
+        radial-gradient(circle at 80% 90%, rgba(136, 255, 206, 0.12), transparent 50%),
+        linear-gradient(120deg, rgba(0, 255, 255, 0.08), rgba(0, 255, 170, 0.1));
+    filter: blur(16px);
+    z-index: 6;
+    will-change: transform;
 }
 
-#sea4 {
+#astronaut {
+    position: absolute;
+    width: 160px;
+    height: 220px;
+    left: 10%;
+    top: 30%;
+    z-index: 7;
+    transform: translateZ(0);
+    pointer-events: none;
+    will-change: transform;
+}
+
+.astronaut-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #f4f6fb 0%, #d8deed 80%);
+    border-radius: 40% 40% 30% 30%;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.7), 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.astronaut-body::before,
+.astronaut-body::after {
+    content: '';
+    position: absolute;
+    background: #f4f6fb;
+    box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+.astronaut-body::before {
+    width: 70%;
+    height: 22%;
+    top: -18%;
+    left: 15%;
+    border-radius: 50% 50% 40% 40%;
+    background: linear-gradient(180deg, #f4f6fb 0%, #e4e8f3 100%);
+}
+
+.astronaut-body::after {
+    width: 20%;
+    height: 45%;
+    bottom: -15%;
+    left: 40%;
+    border-radius: 40% 40% 25% 25%;
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.6);
+}
+
+.visor {
+    position: absolute;
+    width: 70%;
+    height: 26%;
+    top: 10%;
+    left: 15%;
+    background: linear-gradient(135deg, #0e1a2b 0%, #4a91c2 80%);
+    border-radius: 18px;
+    box-shadow: inset -4px -4px 12px rgba(0, 0, 0, 0.45), inset 4px 4px 10px rgba(255, 255, 255, 0.25);
+}
+
+.jetpack {
+    position: absolute;
+    width: 60%;
+    height: 30%;
+    bottom: 10%;
+    left: 20%;
+    background: linear-gradient(180deg, #c7d2e6 0%, #92a9cc 80%);
+    border-radius: 16px;
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.7), 0 8px 14px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+}
+
+.flame {
+    position: absolute;
+    width: 16px;
+    height: 60px;
+    left: 50%;
+    bottom: -48px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #ffe66b 0%, #ff9f1c 60%, #ff3c00 100%);
+    border-radius: 10px;
+    filter: drop-shadow(0 0 8px rgba(255, 166, 0, 0.8));
+    animation: flicker 0.45s ease-in-out infinite alternate;
+}
+
+.flame.secondary {
+    width: 10px;
+    height: 40px;
+    left: 30%;
+    animation-delay: 0.15s;
+    opacity: 0.85;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+    }
+
+    100% {
+        transform: translateX(-50%) scaleY(0.8) scaleX(1.1);
+    }
+}
+
+@keyframes drift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 400px 800px;
+    }
+}
+
+#deep-stars {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(1px 1px at 15% 40%, rgba(255, 255, 255, 0.5), transparent 50%),
+        radial-gradient(2px 2px at 70% 55%, rgba(255, 255, 255, 0.35), transparent 50%),
+        radial-gradient(1.4px 1.4px at 45% 15%, rgba(255, 255, 255, 0.45), transparent 50%);
+    background-size: 500px 500px;
+    opacity: 0.35;
+}
+
+#orbit-lines {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 4px),
+        radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 4px);
+    background-size: 220px 220px;
+    opacity: 0.6;
+}
+
+.orbitals {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.orbitals span {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #d5e8ff 0%, rgba(255, 255, 255, 0.1) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(140, 200, 255, 0.8);
+    animation: float 16s ease-in-out infinite;
+}
+
+.orbitals span:nth-child(1) {
+    top: 10%;
+    left: 8%;
+    animation-delay: 1s;
+}
+
+.orbitals span:nth-child(2) {
+    top: 25%;
+    right: 12%;
+    animation-delay: 3s;
+}
+
+.orbitals span:nth-child(3) {
     top: 50%;
-    right: 0;
-    width: 12%;
+    left: 18%;
+    animation-delay: 5s;
 }
 
-#sea5 {
+.orbitals span:nth-child(4) {
+    top: 60%;
+    right: 30%;
+    animation-delay: 7s;
+}
+
+.orbitals span:nth-child(5) {
     top: 70%;
-    left: 1%;
-    width: 10%;
+    left: 48%;
+    animation-delay: 2s;
 }
 
-#sea6 {
-    top: 75%;
-    right: 2%;
-    width: 6%;
+.orbitals span:nth-child(6) {
+    top: 82%;
+    right: 6%;
+    animation-delay: 4s;
 }
 
-#sea7 {
-    top: 90%;
-    right: 70%;
-    width: 10%;
+.orbitals span:nth-child(7) {
+    top: 35%;
+    left: 65%;
+    animation-delay: 6s;
 }
 
-#sea8 {
-    bottom: 0;
-    left: 55%;
-    width: 10%;
-    z-index: 100;
+.orbitals span:nth-child(8) {
+    top: 15%;
+    right: 45%;
+    animation-delay: 8s;
+}
+
+.comets {
+    z-index: 2;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
 }
 
 
@@ -326,24 +538,11 @@ section #text {
         /* Adjust text size acc to screen size */
     }
 
-    /* Using contian to make img fit mobile screen size */
-    /* height and width chnages size and position */
-    section img#cloud {
-        object-fit: contain;
-        height: 600px;
-        width: 600px;
-    }
-
-    section img#bird1 {
-        object-fit: contain;
-        height: 600px;
-        width: 400px;
-    }
-
-    section img#bird2 {
-        object-fit: contain;
-        height: 750px;
-        width: 500px;
+    #astronaut {
+        width: 130px;
+        height: 180px;
+        left: 8%;
+        top: 35%;
     }
 
     /* Adjust text content acc to screen size */
@@ -364,56 +563,7 @@ section #text {
         margin: 1% 4%;
     }
 
-    #seabed {
-        object-fit: contain;
-        left: 0;
-        width: 750px;
-    }
-
     .glass {
         backdrop-filter: blur(1px);
-    }
-
-    #sea1 {
-        top: 7%;
-        width: 40%;
-    }
-
-    #sea2 {
-        top: 25%;
-        width: 20%;
-    }
-
-    #sea3 {
-        top: 42%;
-        width: 25%;
-    }
-
-    #sea4 {
-        top: 52%;
-        width: 25%;
-    }
-
-    #sea5 {
-        top: 72%;
-        left: 1%;
-        width: 20%;
-    }
-
-    #sea6 {
-        top: 80%;
-        right: 2%;
-        width: 15%;
-    }
-
-    #sea7 {
-        top: 96%;
-        left: 1%;
-        width: 20%;
-    }
-
-    #sea8 {
-        left: 50%;
-        width: 15%;
     }
 }

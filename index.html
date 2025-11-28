@@ -38,34 +38,33 @@
         </ul>
     </header>
 
-    <!-- This is the Top Section (Above Water) -->
+    <!-- This is the Top Section (Orbiting Above Earth) -->
     <section>
-        <img src="images/land/sky.png" id="sky" class="wallpaper">
-        <img src="images/land/sun.png" id="sun">
-        <img src="images/land/mountains.png" id="mountains" class="wallpaper">
-        <img src="images/land/cloud.png" id="cloud">
+        <div id="space-gradient" class="wallpaper"></div>
+        <div id="stars" class="wallpaper"></div>
+        <div id="stars-foreground" class="wallpaper"></div>
+        <div id="earth-glow"></div>
+        <div id="earth"></div>
         <h2 id="text"><span>"Embrace the Thrill of"</span><br>Project Management</h2>
-        <img src="images/land/forest.png" id="forest">
-        <img src="images/land/bird1.png" id="bird1">
-        <img src="images/land/bird2.png" id="bird2">
-        <a href="#sec" id="explore">Explore</a>
-        <img src="images/land/rocks.png" id="rocks">
-        <img src="images/land/splash.png" id="splash">
-        <img src="images/land/water.png" id="water">
+        <div id="aurora"></div>
+        <a href="#sec" id="explore">Launch</a>
+        <div id="astronaut" aria-hidden="true">
+            <div class="astronaut-body">
+                <div class="visor"></div>
+                <div class="jetpack">
+                    <span class="flame"></span>
+                    <span class="flame secondary"></span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- This is the Middle Section (Below Water) which has content -->
     <div class="sec" id="sec">
 
-        <!-- Importing sea background images (on top.. so that it hides behind glass content) -->
-        <img src="images/sea/sea1.png" id="sea1" class="undersea">
-        <img src="images/sea/sea2.png" id="sea2" class="undersea">
-        <img src="images/sea/sea3.png" id="sea3" class="undersea">
-        <img src="images/sea/sea4.png" id="sea4" class="undersea">
-        <img src="images/sea/sea5.png" id="sea5" class="undersea">
-        <img src="images/sea/sea6.png" id="sea6" class="undersea">
-        <img src="images/sea/sea7.png" id="sea7" class="undersea">
-        <img src="images/sea/sea8.png" id="sea8" class="undersea">
+        <!-- Star layers tucked behind the glass content -->
+        <div id="deep-stars" class="undersea"></div>
+        <div id="orbit-lines" class="undersea"></div>
 
         <!-- Text Content here -->
         <h2>Parallax Scrolling Effects</h2>
@@ -165,22 +164,27 @@
             </ul>
         </div>
 
-        <!-- Importing fish and seabed images -->
-        <img src="images/sea/fish1.png" id="fish1" class="fishes">
-        <img src="images/sea/fish2.png" id="fish2" class="fishes">
-        <img src="images/sea/fish3.png" id="fish3" class="fishes">
-        <img src="images/sea/fish4.png" id="fish4" class="fishes">
-        <img src="images/sea/oceanbed.png" id="seabed" class="fishes">
+        <!-- Floating debris and comets to keep the void lively -->
+        <div class="orbitals">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-        <!-- Container for the bubble animation -->
-        <div class="bubbles">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
-            <img src="images/sea/bubble.png" alt="">
+        <!-- Container for the comet animation -->
+        <div class="comets">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 
