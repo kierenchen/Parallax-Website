@@ -5,6 +5,7 @@ const earth = document.getElementById('earth');
 const earthGlow = document.getElementById('earth-glow');
 const stars = document.getElementById('stars');
 const starsForeground = document.getElementById('stars-foreground');
+const starDust = document.getElementById('star-dust');
 const deepStars = document.getElementById('deep-stars');
 const orbitLines = document.getElementById('orbit-lines');
 const aurora = document.getElementById('aurora');
@@ -14,15 +15,18 @@ window.addEventListener('scroll', function () {
     const value = window.scrollY;
 
     text.style.transform = `translateY(${value * -0.2}px)`;
-    header.style.transform = `translateY(${value * 0.4}px)`;
-    explore.style.transform = `translateY(${value * 0.6}px)`;
+    header.style.transform = `translateY(${value * 0.3}px)`;
+    explore.style.transform = `translateY(${value * 0.5}px)`;
 
     const earthScale = 1 + value * 0.00025;
     earth.style.transform = `translateX(-50%) translateY(${value * 0.18}px) scale(${earthScale})`;
     earthGlow.style.transform = `translateX(-50%) translateY(${value * 0.14}px)`;
     aurora.style.transform = `translateY(${value * 0.1}px)`;
-    stars.style.transform = `translateY(${value * 0.08}px)`;
-    starsForeground.style.transform = `translateY(${value * 0.14}px)`;
+    stars.style.transform = `translateY(${value * 0.07}px)`;
+    starsForeground.style.transform = `translateY(${value * 0.12}px)`;
+    if (starDust) {
+        starDust.style.transform = `translateY(${value * 0.05}px)`;
+    }
 
     // Parallax for mid-section space textures
     if (deepStars) {
@@ -33,11 +37,12 @@ window.addEventListener('scroll', function () {
     }
 
     // Give the astronaut a lively, pseudo-random flight path tied to scroll
-    const randomX = Math.sin(value * 0.025) * 140 + Math.cos(value * 0.045) * 90;
-    const randomY = Math.cos(value * 0.018) * 120 + Math.sin(value * 0.033) * 60 + value * 0.3;
-    const rotation = Math.sin(value * 0.03) * 18;
+    const randomX = Math.sin(value * 0.02) * 180 + Math.cos(value * 0.055) * 120;
+    const randomY = Math.cos(value * 0.018) * 150 + Math.sin(value * 0.037) * 90 + value * 0.32;
+    const wobble = Math.sin(value * 0.08) * 12;
+    const rotation = Math.sin(value * 0.03) * 22 + wobble;
 
-    astronaut.style.transform = `translate(${randomX}px, ${randomY * 0.4}px) rotate(${rotation}deg)`;
+    astronaut.style.transform = `translate(${randomX}px, ${randomY * 0.45}px) rotate(${rotation}deg)`;
 });
 
 // Contains the link for all social media handles
